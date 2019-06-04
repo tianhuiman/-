@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.tabs {
+  width: 700px;
+  height: 400px;
+  float: left;
+}
+.tabs ul {
+  list-style: none;
+  overflow: hidden;
+}
+.tabs ul li {
+  float: left;
+  width: 100px;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  border: 1px solid black;
+  margin: 5px 10px;
+  border-radius: 3px;
+}
+.tabs ul li.active {
+  background-color: greenyellow;
+}
+.tabs div {
+  padding: 20px;
+  width: 700px;
+  height: 350px;
+  position: absolute;
+  border: 1px solid black;
+  display: none;
+}
+.tabs div.show {
+  display: block;
+}
+
+    </style>
+</head>
+<body>
+    <img src="./1bag70e8cjfdj807k4kbcgg095lia_220x320.gif" alt="tupian">
+
+
+    <div class="tabs">
+        <ul>
+            <li class="active">tab1</li>
+            <li>tab2</li>
+            <li>tab3</li>
+        </ul>
+        <div class="show" data-type="tabs">111111111111</div>
+        <div data-type="tabs">22222222222222</div>
+        <div data-type="tabs">3333333333333</div>
+    </div>
+
+<script>
+var oli=document.querySelectorAll("ul>li");
+var obox=document.querySelectorAll(".tabs>div");
+/* console.log(obox);  拿到*/
+
+for(var i=0;i<oli.length;i++){
+    oli[i].index=i;
+    console.log("1"+i);
+    oli[i].onclick=function(){
+        console.log("2"+i);
+        for(var j=0;j<oli.length;j++){
+            oli[j].classList.remove("active");
+            obox[j].classList.remove('show');
+            console.log("3"+i);
+        }
+        this.classList.add("active");
+        obox[this.index].classList.add('show');
+    }
+    console.log("4"+i);
+}
+</script>
+</body>
+</html>

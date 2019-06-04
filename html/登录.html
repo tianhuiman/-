@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/蘑菇街.css">
+</head>
+
+
+
+    
+<body>
+   
+<div id="pinbi">
+<!--     <form action="#"> -->
+                    <!-- 发送至这个./PHP文件 -->
+       <!--  <form action="../php/get-denglu.php" method="GET" id="myform" name="myform">
+ -->
+                <div id="lt">注 册</div>
+                <label for="username">用<i></i>户<i></i>名：</label>
+                <input type="text" id="username" name="username">
+                <span class="username"></span>
+                <br />
+                <label for="password">密<em></em>码：</label>
+                <input type="password" id="password" name="password">
+                <span class="password"></span>
+                <br />
+                <div id="dvv"></div>
+            <!-- button的默认类型是submit -->
+            <button><a href="./注册.html" id="submit1">注册</a></button> 
+            <!-- <button type="button">提交</button> -->
+            <input type="botton" value="登录" id="submit2"> 
+       
+       <!--  </form> -->
+ <!--    </form> -->
+
+<script>
+            var  inp=document.querySelectorAll("input");
+            var oSpan=document.querySelectorAll("span");
+
+            var ser=/(^\w{6,}$)|([u4e00-u9fa5])/;
+            inp[0].onblur=function(){
+                if(ser.test(inp[0].value)){
+                    oSpan[0].innerHTML="√";
+                    oSpan[0].style.color="green"
+
+                }else{
+                    oSpan[0].innerHTML="× 格式错误";
+                    oSpan[0].style.color="red";
+                    oSpan[0].style.fontSize=14+"px";
+                }
+            }
+
+             var set=/^\w{6,}$/;
+             inp[1].onblur=function(){
+                 if(set.test(inp[1].value)){
+                    oSpan[1].innerHTML="√";
+                    oSpan[1].style.color="green";
+                 }else{
+                     oSpan[1].innerHTML="× 格式错误";
+                     oSpan[1].style.color="red";
+                     oSpan[1].style.fontSize=14+"px";
+                 }
+             }
+</script>
+<script src="../js/ajax.js"></script> 
+</div>
+<script>
+
+</script>
+</body>
+</html>

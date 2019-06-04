@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  <script src="../js/jquery.min.js"></script>
+  <script src="../js/cookie.js"></script>
+  <style>
+  body{
+      padding: 30px 150px;
+  }
+  .pic img{
+      float: left;
+      margin-right: 30px;
+      width: 400px;
+      height: 450px;
+  }
+  .p-price{
+    float: left;
+    width: 600px;
+     /*  position: absolute;
+      left: 700px;
+      top: 50px;
+ */
+  }
+  .yuan{
+      color: red;
+      font-weight: 900;
+      font-size: 30px;;
+  }
+  .add{
+    display: block;
+      width: 150px;
+      height: 30px;
+      background: red;
+      color: white;
+      font-size: 1em;
+      text-decoration: none;
+      text-align: center;
+      margin-top:10px;
+  }
+  .num{
+      margin-top: 60px;
+  }
+  </style>
+    <script>
+ /* 在http路径拿取ID号 ：location.search() split()分割*/
+
+ $(function() {
+            var id = location.search.split('=')[1];/* 获取ID */
+            console.log(id); 
+            $.ajax({
+                type: "get",
+                url: "http://127.0.0.1:8080/guowu/php/cong.php",
+                dataType:"json",                             
+                success: function(data) { 
+                    /* console.log(data); */
+                $sre=data[id-1];
+                console.log(data[id]);
+                console.log($sre.title);
+                  $htmlset=`
+                  
+            
+             <div class="pic">  <img src=".${$sre.pic}">    </div>
+             <div class="p-price">
+                  <h2 class="title">${$sre.title}</h2>
+                 <span class="yuan">价格 ￥${$sre.price}</span>
+             
+             <div class="num">库存数量：${$sre.num}</div>
+             <input type="number" value="1" min="1" max="${$sre.num}" id="num">
+            <a class="add" href="./购物车列表.html">加入购物车</a>
+             <div class="p-details">
+                 <h3>商品详细信息</h3>
+                 ${$sre.title}
+             </div>
+            </div>
+                  `;                            /* find（查找） */
+                  $('body').append($htmlset).find('.add').on('click', function() {
+                        addShopCar($sre.id, $sre.price, $('#num').val());
+                    });
+                }
+            });
+
+            function addShopCar(id, price, num) {
+                var shop = cookie.get('shop'); //从cookie获取shop
+                var product = {
+                    "id": id,
+                    "price": price,
+                    "num": num
+                };
+
+                if (shop) {/*  */
+                        shop = JSON.parse(shop); // cookie中如果有数据 这个数据是json字符串 转成对象
+                    /* 如果已经存在这条，覆盖原数据  some（含有） */
+                    /*  判断条件：传进来的ID与已经存在的ID相同*/
+                        if (shop.some(elm => elm.id == id)) {
+                            shop.forEach(function(elm, i) {
+                                elm.id == id ? elm.num = num : null;
+                            });
+                        } else {
+                            shop.push(product);
+                        }
+                        cookie.set('shop', JSON.stringify(shop), 1);
+                } else {/* 如果没有，变数组，添加 */
+                    shop = [];
+                    shop.push(product);
+                    cookie.set('shop', JSON.stringify(shop), 1);
+                }
+
+            }
+        })
+    </script>
+</head>
+<body>
+      <!--   <h1 class="title"></h1>
+             <div class="pic">
+                 <img src="#">    
+             </div>
+             <div class="p-price">
+                 <span class="yuan">￥67</span>
+             </div>
+             <div class="num">库存</div>
+             <input type="number" value="1" min="1" max="100" id="num">
+            <input type="button" class="add" value="加入购物车">
+             <div class="p-details">
+                 <h1>商品详细信息</h1>
+                
+             </div> -->
+</body>
+</html>

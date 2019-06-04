@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>     
+   /***** 轮播图 ：几张图重叠，1秒钟，在图片中心*淡淡出现，淡淡消失*/
+#lunbobox {
+    width:510px;
+    height:550px;
+    position:relative;
+}
+.lunbo {
+    width:510px;
+    height:550px;
+}
+.lunbo img {
+    width:510px;
+    height:550px;
+    position:absolute;
+    top:0px;
+    left:0px;
+}
+#lunbobox ul {
+    width:285px;
+    position:absolute;
+    bottom:10px;
+    right:55px;
+    z-index:5;
+}
+#lunbobox ul li {
+    cursor:pointer;
+    width:30px;
+    height:30px;
+    border:1px solid #cccccc;
+    border-radius: 50%;
+    float:left;
+    list-style:none;
+    background:#cccccc;
+    text-align:center;
+  /*  margin: 0 5px; */
+}
+#toleft {
+    display:none;
+    width:30px;
+    height:100px;
+    font-size:40px;
+    line-height:100px;
+    text-align:center;
+    color:#f4f4f4;
+    /*background:#cccccc;
+    */
+    /*background:url("../images/toleft.jpg")no-repeat center;
+    */
+    position:absolute;
+    top:90px;
+    left:12px;
+    cursor:pointer;
+    z-index:99;
+    opacity:0.4;
+}
+#toright {
+    display:none;
+    width:30px;
+    height:100px;
+    font-size:40px;
+    line-height:100px;
+    text-align:center;
+    color:#f4f4f4;
+    /*background:#cccccc;
+    */
+    position:absolute;
+    top:90px;
+    right:0px;
+    cursor:pointer;
+    z-index:99;
+    opacity:0.4;
+}
+
+</style>
+
+<body>
+
+    <div id="lunbobox">
+        <div id="toleft">
+            &lt;</div>
+        <div class="lunbo">
+            <a href="#"><img src="./img/美女2.webp"></a>
+            <a href="#"><img src="./img/美女1.png"></a>
+            <a href="#"><img src="./img/美女3.jpg"></a>
+            <a href="#"><img src="./img/帅哥.jpg"></a>
+            <a href="#"><img src="./img/帅哥2.jpg"></a>
+        </div>
+        <div id="toright">&gt;</div>
+        <ul>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+        <span></span>
+    </div>
+
+    <script src="./js/jquery.min.js"></script>
+</body>
+<script>
+    var t;
+    var index = 0;
+    /////自动播放
+    t = setInterval(play, 3000);         /* 计时器 3秒更新 */
+
+    function play() { index++;          /* 图片换动 */
+        if (index > 4) {index = 0}          /* 如果是第五张图，就切换到第一张图 */
+        // console.log(index)
+        $("#lunbobox ul li").eq(index).css({    /* .eq(index)选中的元素 */
+            "background": "#999",
+            "border": "1px solid #ffffff"
+        }).siblings().css({                     /* .siblings()其他同级元素 */
+            "background": "pink",
+            "border": ""
+        })
+/* $(".lunbo a ").eq(index)   正在轮播。。。中。。。 */
+         $(".lunbo a ").eq(index).fadeIn(1000).siblings().fadeOut(1000); 
+    };                          /*当前图 fadeIn(1000)    1秒淡色进入 */
+                                /*其他同级 fadeOut(1000)   1秒淡色离开 */
+
+   
+</script>
+ 
+</html>

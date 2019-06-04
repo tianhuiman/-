@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  <script src="../js/jquery.min.js"></script>
+  <script src="../js/cookie.js"></script>
+  <style>
+      *{
+          margin: 0;
+          padding: 0;
+      }
+  #dao{
+      list-style:none;
+      overflow: hidden;
+      position: relative;
+      padding-bottom:20px;
+  }
+  #dao .item{    
+      overflow: hidden;
+      height: 140px; 
+       border:1px solid #999;
+       margin: 30px 60px; 
+       padding: 2px;   
+  }
+  #dao .item>div{
+      float: left;   
+  }
+  #dao .p-img>img{
+    width: 100px;
+    margin:2px;
+  }
+   #dao .p-title{
+      width: 700px;
+      
+  }
+  #dao .p-title,.num,.p-price,.p-sum,.del,.p-num{
+      line-height: 140px;
+      text-align: center;
+      padding-right: 35px;
+  }
+  #p1{
+      width: 20px;
+  }
+  #dao .p-sum{
+      color: red;
+  }
+  #dao a{
+      text-decoration: none;
+      color: #999;
+  }
+  #he{
+   
+      float: right;
+      color: red;
+      margin-right: 120px;
+  }
+  </style>
+</head>
+<body>
+   <ul id="dao">
+    <!-- <li class="item">
+      <div class="box">
+          <input type="checkbox" id="p1">
+      </div>
+      <div class="p-img">
+        <img src="./img/12.jpg" alt="图片">
+      </div>
+      <div class="p-title">
+            阳台花架防盗网悬挂铁艺花架护栏挂式花盆架窗台壁挂多肉栏杆花架
+      </div>
+      <div class="num">
+          数量:<input type="number" value="1" min="1" max="200">
+      </div>
+      <div class="p-price">
+          单价：99.9
+      </div>
+      <div class="p-sum">
+        总价：9999
+      </div>
+      <div class="del"><a href="#">删除</a></div>
+    </li> -->
+   </ul>
+   <p><span id="he">  </span></p>
+</body>
+<script>
+    $(function(){
+        var shop=cookie.get("shop");
+                                     /*  console.log(shop);   [{"id":"7","price":"7.6","num":"1"},*/
+        if(shop){
+            shop=JSON.parse(shop);   /*  console.log(shop);  [{0: {id: "7", price: "7.6", num: "1"},{},{}.. ]*/
+            // console.log(shop);                       /* 产品列表，需要ajax请求 */
+           var idlist=shop.map(elm=>elm.id).join();
+                                     /*    console.log(idlist);  //8, 6  */
+            $.ajax({
+                type:"get",
+                url:"http://127.0.0.1:8080/guowu/php/shop.php",
+                data:{
+                    "idlist":idlist,   
+                },
+                success:function(data){
+                    data=$.parseJSON(data);
+                    console.log(data[0].pic);
+                    var $a=0;
+                    for(var i=0;i<data.length;i++){
+                        var mb=
+                        `<li class="item">
+                            <div class="c-box">
+                                <input type="checkbox" id="p-${data[i].id}">
+                            </div>
+                            <div class="p-img">
+                                <img src=".${data[i].pic}" alt="${data[i].title}">
+                            </div>
+                            <div class="p-title">
+                                ${data[i].title}
+                            </div>
+                            <div class="p-num">
+                                数量：<input type="number" value="${shop[i].num}" min="1" max="${data[i].num}">
+                            </div>
+                            <div class="p-price">
+                                单价:${data[i].price}
+                            </div>
+                            <div class="p-sum">
+                                总价:${(shop[i].num*data[i].price).toFixed(2)}
+                            </div>
+                            <div class="del"><a href="#">删除</a></div>
+                        </li>`;
+                        // console.log(mb);
+                        $("#dao").html($("#dao").html()+mb);
+
+                         $a+=parseFloat((shop[i].num*data[i].price).toFixed(2));
+                        /*  console.log($a); 419.7， 436.2， 1108.2*/
+                    }
+                    $("#he").html("共："+ `￥${$a.toFixed(2)} 元`);
+                }
+             
+            })
+
+        }
+     })
+</script>
+</html>

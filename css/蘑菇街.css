@@ -1,0 +1,409 @@
+@charset "utf-8";
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: #000;
+}
+html,body{
+    width: 100%;
+    height: 100%;
+ 
+}
+  img{
+      border-radius: 8px;
+  } 
+
+/* @media(min-width:) */
+li{
+    list-style: none;
+}
+a{
+    text-decoration: none;
+   color: #999;
+}
+
+.tou{
+width: 100%;
+line-height:33px ;
+text-align: center;
+/* overflow: hidden; */
+border-bottom: 1px solid #e6e6e6;
+
+}
+.tou>li{
+text-align: center;
+float:right;
+font-size: 12px;
+height: 32px;
+}
+li:nth-of-type(1){
+    margin-right: 8%;
+    position: relative;
+}
+li:nth-of-type(1):hover #hh{display: block;z-index: 999;}
+#hh{
+    position: absolute;
+    top: 30px;
+    right: 2%; 
+   background: #fff;
+  overflow: hidden;
+   display: none; 
+   cursor: pointer;
+   z-index: 999;
+   width: 804px
+}
+
+#hh .aa,.bb,.cc,.ee,.ww,.qq{
+    float: left;
+    margin: 30px;
+}
+.t,.y,.u,.i,.o,.p,.xx{
+    width: 30px;
+    margin:0 0 10px 5px;
+    border-bottom: 2px solid #999;
+   
+}
+
+.tou>li>span{
+    display: block;
+    float: right;
+    height: 10px;
+    margin:10px 20px;
+  border-right:2px solid #999;
+  background-color: #999; 
+}
+.tou>li>a>i{
+    color: red;
+}
+.tou>#hang{
+position: absolute;
+right: 0;
+top: 33px;
+width: 80%;
+height:400px;
+border:2px solid #999;
+}
+.tou>#hang>li{
+    float: left;
+    
+}
+#wrap{
+    width:100%;
+    height:100px;
+    padding: 0 8%;
+    overflow: hidden;
+}
+
+#wrap>a{
+    float: left;
+    margin-right: 30px;
+}
+
+#wrap>div{
+    float: left;
+    padding: 40px;
+    position: relative;
+}
+#wrap>div>i{
+   position: absolute;
+   top:44px;
+   left: 0;
+
+}
+#wrap>#bx{
+    padding: 0;
+    overflow: hidden;
+    width: 400px;
+    height: 100px;
+    position: relative;
+   /*  left: 550px;
+    top:-55px; */
+}
+#wrap>#bx>img{
+    width: 50px;
+    height: 50px; 
+    cursor: pointer;
+    z-index: -2;
+}
+#wrap>#bx>#deng{
+    width: 90px;
+    height: 60px;
+    margin-left: 50px;
+  
+}
+
+
+
+
+#wrap>form{
+    width: 552px;
+    height: 48px;
+    margin-top: 33px;
+    border-radius: 6px;
+    background: #F7F7F7;
+    float: left;
+    
+}
+#wrap>form>#nav{
+    width: 492px;
+    height: 48px;
+    border-radius: 6px;
+    background: #F7F7F7;
+    border: none; 
+    padding: 0 10px;
+}
+#wrap>form>#but{
+    width: 58px;
+    height: 48px;
+    border: none;
+    cursor: pointer;
+    border-radius: 0 5px 5px 0;
+    background: url(./img/QQ.png) 10%;
+    color: #fff;
+    font-size: 0;
+}
+body>#canter{
+    width: 100%;
+    height: 1000px;
+    padding:0 8%;
+    margin-top: 50px;
+    position: relative;
+    background: #fefefe;
+}
+#canter>.le{
+    position: absolute;
+    top:0;
+    left: 8%;
+    width: 220px;
+}
+#canter>.le>img{
+    margin-bottom: 20px;
+}
+#canter>.te{
+    position: absolute;
+    top:0;
+    left: 25%;
+    width: 710px;
+}
+#canter>.te>img{
+    margin-bottom: 20px;
+    border-radius:8px;
+}
+#canter>.ri{
+    position: absolute;
+    top:0;
+    right: 8%;
+    width: 220px;
+}
+#canter>.ri>img{
+    margin-bottom: 20px;
+}
+
+#canter>.te>#con-meu{
+    width: 710px;
+    height: 403px;
+    border:1px solid #ececec;
+    border-radius:8px;
+}
+#canter>.te>#con-meu>#ge{
+    width: 710px;
+    height: 224px;
+   
+}
+#canter>.te>#con-meu>#ge>li{
+    margin: 0;
+    width: 118px;
+    height: 120px;
+    float: left;
+   
+}
+#canter>.te>#con-meu>#but{
+    position: absolute;
+    width: 710px;
+    height: 100px;
+    /* bottom: 0; */
+    padding-left: 20px;
+    font-size: 14px;
+   margin: 20px 0;
+}
+#canter>.te>#con-meu>#but>a{
+    margin: 8px 0;
+    margin-right: 20px;
+    width: 117px;
+    line-height: 30px;
+    float: left;
+    text-align: center;
+    background-color: rgb(245, 245, 245);
+    border-radius:15px;
+    color: #333;
+}
+#canter>.te>#bom{
+    width: 710px;
+}
+#canter>.te>#bom>img{
+  padding:10px;
+  border-radius: 8px;
+ 
+}
+
+
+#canter  #lunbobox {
+    width:710px;
+    height:750px;
+    position:relative;
+}
+#canter>.te>#lunbobox>.lunbo {
+    width:710px;
+    height:750px;
+}
+#canter>.te>#lunbobox .lunbo>img {
+    width:710px;
+    height:750px;
+    position:absolute;
+    top:0px;
+    left:0px;
+    padding:10px;
+  border-radius: 8px;
+  
+
+}
+
+
+
+
+#foot{
+    width:1200px;
+    height:900px;   
+    margin:200px 100px;
+    position: relative;
+  
+}
+#foot .item>img {
+    width: 215px;
+    display: block;
+    margin-top: 10px;
+    margin-left: 11px;
+}
+ #foot .item {
+    box-shadow: 5px 5px 5px #999;
+    position: absolute;
+} 
+ .tou{
+     position: relative;
+ }
+ .tou>#yinchang{
+     position: fixed;
+     top:0;
+     left: 0;
+     overflow: hidden;
+     width: 100%;
+     z-index: 999; 
+     height: 100px; 
+     opacity:.9;
+     background: #fff;
+      display: none; 
+ }
+ 
+ 
+ #fd>.f1,.f2{
+    float: left;
+    margin: 30px;
+}
+#wrap>#fd{
+    position: absolute;
+    top: 70px;
+    left: 170px;
+    z-index: 9990;
+    opacity:.9;
+    background: #fff;
+    display: none;
+
+}
+#mu:hover~#fd{
+    display: block;
+}
+#pinbi{
+    width: 100%;
+    height: 100%;
+   /*  background: #999; */
+       background: url(../img/up.png) center no-repeat; 
+    overflow: hidden; 
+    opacity: 0.9;
+    position: relative;
+}
+#gotop{
+position: fixed;
+bottom: 30px;
+right: 10px;
+color: #000;
+width: 100px;
+line-height: 30px;
+border-radius: 8px;
+font-size: 14px;
+text-align: center;
+background: paleturquoise;
+}
+#gotop:hover{
+    color: red;
+}
+#pinbi form{
+    width: 450px;
+    height: 300px;
+    background: #fff;
+    border: 1px solid #eee;
+    position: absolute;
+    left: 60%;
+    top:100px;
+ /*    margin-left: -200px; */
+    padding: 20px 30px;
+}
+#pinbi #hui{
+    color: red;
+}
+#pinbi a{
+    color: #000;
+}
+#pinbi label{
+    display: inline-table;
+    width: 100px;
+    line-height: 30px;
+    
+}
+#pinbi label>em{
+    display: inline-block;
+    width: 40px;
+}
+#pinbi label>span{
+    display: block;
+
+}
+#pinbi label>i{
+    display: inline-block;
+    width: 10px;
+}
+#pinbi #dvv{
+    display: inline-block;
+    width: 100px;
+    height: 30px;
+}
+
+#pinbi #submit{
+    color: darkcyan;
+}
+#pinbi #wawa{
+    color: darkcyan;
+    display: inline-block;
+    width: 160px;
+    height: 30px;
+}
+#pinbi #lt{
+    width: 100%;
+    line-height: 50px;
+    background:powderblue; 
+    border-radius: 8px;
+    color: blue;
+    font-size: 24px;
+    text-align: center;
+    margin-bottom: 10px;
+}
